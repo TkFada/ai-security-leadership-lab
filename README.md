@@ -1,8 +1,8 @@
 # AI Security Lab
 
-> Building practical expertise across AI application security, agentic AI, MCP, red teaming, AI platform security, MLSecOps, architecture, and governance.
+> Hands-on research and engineering across agentic AI, MCP, RAG, AI red teaming, platform security, MLSecOps, architecture, and governance.
 
-This repository is my public evidence trail for an intensive hands-on AI security program. It is designed around one principle:
+This repository is a public evidence trail for practical AI security work.
 
 **Build it → attack it → defend it → test it → explain it.**
 
@@ -11,7 +11,7 @@ This repository is my public evidence trail for an intensive hands-on AI securit
 - Agentic AI security
 - MCP and tool security
 - Prompt injection and indirect prompt injection
-- RAG and memory security
+- RAG, retrieval, and memory security
 - Identity, authorization, delegation, and least agency
 - AI red teaming and adversarial evaluations
 - Sandboxing and containment
@@ -22,37 +22,42 @@ This repository is my public evidence trail for an intensive hands-on AI securit
 - Incident response and telemetry
 - AI security governance and leadership
 
-## Portfolio Evidence
+## Lab Catalogue
 
-Area                Evidence 
+The public lab catalogue is maintained in [`LABS.md`](LABS.md).
 
-Hands-on labs:      Reproducible attack and defense exercises
-Engineering:        Secure controls, policy enforcement, tests, and tooling
-Threat modeling:    Architecture reviews and abuse-case analysis 
-Red teaming:        Repeatable adversarial evaluations 
-Leadership:         Security standards, executive briefs, and design reviews 
-Community:          External issues, PRs, discussions, and feedback 
+Each published lab contains:
 
-
-
+- objective and architecture
+- threat hypothesis
+- attack path
+- reproducible evidence
+- root-cause analysis
+- defensive control
+- regression test
+- engineer explanation
+- leadership explanation
+- references to primary standards/specifications where appropriate
 
 ## Repository Structure
 
 ```text
 .
-├── docs/              # GitHub Pages portfolio
-├── labs/              # Hands-on labs
+├── LABS.md            # Public lab catalogue and status
+├── labs/              # Hands-on attack/defense labs
 ├── threat-models/     # Architecture and threat-model artifacts
 ├── writeups/          # Technical write-ups and research notes
-├── evidence/          # Screenshots, reports, demos, external feedback
-└── .github/workflows/ # CI/security automation
+├── evidence/          # Screenshots, traces, reports, and demos
+├── docs/              # GitHub Pages portfolio
+└── .github/workflows/ # CI and security automation
 ```
+
+## Evidence Standard
+
+A completed lab should show more than a successful exploit. The minimum evidence standard is:
+
+**Architecture → attack path → impact → root cause → mitigation → regression test → explanation**
 
 ## Ethics
 
 All offensive exercises are performed only against intentionally vulnerable lab environments or systems where explicit authorization exists.
-
-## Current Status
-
-**Phase:** Pre-Day 1 setup  
-**Goal:** Develop demonstrable, all-round AI security capability with particular depth in agentic AI and platform security.
