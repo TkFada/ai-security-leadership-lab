@@ -41,10 +41,15 @@ jobs:
 
       - name: Check for private keys
         run: |
-          if grep -RIl --exclude-dir=.git --exclude='*.md' \
-            "BEGIN .* PRIVATE KEY" .; then
+          if grep -RIl \
+            --exclude-dir=.git \
+            --exclude='*.md' \
+            --exclude='security.yml' \
+            -- '-----BEGIN .* PRIVATE KEY-----' .; then
             echo "Potential private key material detected."
             exit 1
+          else
+            echo "No private key material detected."
           fi
 
   secret-scan:
