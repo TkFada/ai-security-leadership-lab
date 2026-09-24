@@ -1,4 +1,4 @@
-# AI Security Leadership Lab
+# AI Security Lab
 
 > Building practical expertise across AI application security, agentic AI, MCP, red teaming, AI platform security, MLSecOps, architecture, and governance.
 
@@ -24,20 +24,17 @@ This repository is my public evidence trail for an intensive hands-on AI securit
 
 ## Portfolio Evidence
 
-| Area | Evidence |
-|---|---|
-| Hands-on labs | Reproducible attack and defense exercises |
-| Engineering | Secure controls, policy enforcement, tests, and tooling |
-| Threat modeling | Architecture reviews and abuse-case analysis |
-| Red teaming | Repeatable adversarial evaluations |
-| Leadership | Security standards, executive briefs, and design reviews |
-| Community | External issues, PRs, discussions, and feedback |
+Area                Evidence 
 
-## 30-Day Build
+Hands-on labs:      Reproducible attack and defense exercises
+Engineering:        Secure controls, policy enforcement, tests, and tooling
+Threat modeling:    Architecture reviews and abuse-case analysis 
+Red teaming:        Repeatable adversarial evaluations 
+Leadership:         Security standards, executive briefs, and design reviews 
+Community:          External issues, PRs, discussions, and feedback 
 
-Each day begins with a 10–15 question diagnostic. The day's depth changes based on performance so known material is skipped and weak areas receive more hands-on work.
 
-Progress will be tracked in [`PROGRESS.md`](PROGRESS.md).
+
 
 ## Repository Structure
 
