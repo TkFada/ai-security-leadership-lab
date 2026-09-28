@@ -31,7 +31,7 @@ If more than one technique occurs in an attack chain, the lab documents each sta
 
 ## 30-Day Advanced AI Security Practicum
 
-| Day | Lab | Enterprise Security Question | Primary Mapping | Status |
+| Lab | Name | Enterprise Security Question | Primary Mapping | Status |
 |---:|---|---|---|---|
 | 1 | [Residual Risk in a Guardrailed Agent](labs/day01/README.md) | What still fails after common AI guardrails are already in place? | OWASP Agentic / NIST |  |
 | 2 | [Prompt Injection Beyond Basic Filtering](labs/day02/README.md) | How can untrusted content still influence behavior despite filtering, structured outputs, and instruction hierarchy? | OWASP GenAI |  |
