@@ -29,7 +29,7 @@ If more than one technique occurs in an attack chain, the lab documents each sta
 
 ---
 
-## 30-Day Advanced AI Security Practicum
+## 30 Advanced AI Security Practicum
 
 | Lab | Name | Enterprise Security Question | Primary Mapping | Status |
 |---:|---|---|---|---|
