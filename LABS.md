@@ -1,45 +1,45 @@
-# AI Security Leader Practicum (v3)
+# AI Security Lab Catalogue
 
 > **Operating thesis:** Assume sensible defenses already exist. Test the residual risk that remains when models, agents, tools, data, identities, business authority, and human decision-making interact.
 
 A lab is not complete because an exploit ran. A lab is complete when the practitioner can **explain the architecture, reproduce the behavior, inspect the implementation, support conclusions with evidence, implement or review remediation, regression-test it, explain residual risk, and defend the decision under challenge.**
 
-**What changed from v2:** a starting-point diagnostic; phased sequencing with interview-critical labs first; measurable coding milestones with an authorship log; pass criteria and external assessors for gates; a Leadership Artifacts track; per-lab framework mapping restored (OWASP Agentic, OWASP LLM 2026, OSFI, ACS); a lighter publication standard; version pinning; track naming collision fixed.
+## Public Lab Catalogue
 
----
+> **Purpose:** Explore how defended AI and agentic systems can still fail when models, tools, data, identities, authorization, and business processes interact.
 
-## 1. Structure at a Glance
+| # | Lab | What this lab explores |
+|---:|---|---|
+| **1** | **Residual Risk in a Defended Agent** | Establish a defended agentic system and test how an unauthorized business outcome can still occur even when several security controls operate correctly. |
+| **2** | **Injection to Exfiltration** | Examine whether untrusted content can influence an agent into disclosing synthetic private data through an otherwise permitted tool or communication channel. |
+| **3** | **RAG Integrity and Provenance** | Test whether retrieval systems can still produce unsafe decisions when information is stale, manipulated, incorrectly scoped, or lacking reliable provenance. |
+| **4** | **Persistent Memory Integrity** | Explore how long-term agent memory can become stale, poisoned, over-trusted, or improperly shared across users or sessions. |
+| **5** | **Least Agency and Business Authorization** | Test whether a technically valid and permitted tool action can still violate business policy, and examine where independent authorization should be enforced. |
+| **6** | **Agent Identity and Delegated Authorization** | Explore how users, agents, and workloads should be identified and how delegated authority can be limited without giving an agent all of a user's privileges. |
+| **7** | **Human Approval as a Security Control** | Test whether human approval actually provides meaningful protection when context is incomplete, approvals become stale, or review volume increases. |
+| **8** | **Third-Party MCP Server Security** | Examine the risks of authenticated and allow-listed MCP servers whose metadata, capabilities, or runtime behavior change after onboarding. |
+| **9** | **Coding Agent and Configuration Supply Chain** | Test how code, dependencies, configuration files, CI automation, and human review can still introduce unsafe changes into AI-enabled development workflows. |
+| **10** | **Model Artifact Trust** | Explore why trusted, signed, or hash-verified model artifacts can still introduce risk when loading or serialization mechanisms are unsafe. |
+| **11** | **Provenance and Secure Release Promotion** | Track the models, prompts, policies, tools, data sources, and dependencies that contribute to a release and test whether unproven releases can be blocked. |
+| **12** | **Multi-Agent Trust and Delegation** | Examine why authenticated communication between agents does not automatically imply authorization, and test delegation, approval, and cross-agent data boundaries. |
+| **13** | **Sandbox Egress, Cloud IAM, and Permitted Exceptions** | Test whether sanctioned network paths, workload identities, cloud permissions, or other permitted exceptions can still become routes to business impact. |
+| **14** | **Rogue Agent Containment** | Explore how to contain an agent that is behaving incorrectly while still using valid credentials and approved interfaces. |
+| **15** | **Browser and Computer-Use Agent Security** | Test how browser and desktop agents can create unsafe outcomes even when their individual clicks, typing, and navigation actions are technically permitted. |
+| **16** | **Cascading Failure and AI Dependency Resilience** | Examine what happens when an AI provider becomes unavailable, slow, degraded, changes behavior, or creates unexpected cost and capacity pressures. |
+| **17** | **Telemetry, Incident Response, and Evidence** | Determine whether a harmful agent action can be reconstructed from logs, traces, identities, policy decisions, and execution evidence without creating excessive telemetry risk. |
+| **18** | **Capstone — Defend a Production-Style Agentic System** | Integrate the full system, test it against realistic failure scenarios, strengthen the architecture, investigate incidents, and document the remaining residual risk. |
 
-| Component | What it is | When |
-|---|---|---|
-| **Diagnostic** | Measure the real starting point before planning hours | Week 0 |
-| **18 Core Labs** | One defended reference system, attacked and remediated | Phases 1 to 4 |
-| **Track T: Technical Foundations** | Python, shell, Git, HTTP, identity protocols, policy-as-code, containers | Alongside labs, front-loaded |
-| **Track P: Cloud and Platform** | IAM, workload identity, Kubernetes, secrets, network policy | Inside Labs 6, 13, 18 plus one more |
-| **Track L: Leadership Artifacts** | Documents a security leader actually produces | After specific labs |
-| **Track B: Blind Reviews** | Unfamiliar architectures, no prepared answer | One per phase from Phase 2 |
-| **Track I: Interview Gates** | Timed, scored checkpoints with an external assessor where possible | End of each phase |
+### What the programme covers
 
-Lab groupings are called **Blocks** (1 to 5) so they do not collide with track letters.
+**Influence and integrity:** Labs 1–4 examine how models can be affected by user input, retrieved knowledge, and persistent memory.
 
----
+**Identity and authority:** Labs 5–7 examine who is allowed to act, what they are allowed to do, and when human approval actually adds security.
 
-## 2. Week 0: Diagnostic
+**Tools, protocols, and supply chain:** Labs 8–12 examine MCP, coding agents, model artifacts, release provenance, and multi-agent trust.
 
-The plan starts from measured ability, not from zero. Record results in `progress/diagnostic.md`.
+**Containment and resilience:** Labs 13–16 examine cloud authority, sandbox boundaries, rogue agents, browser agents, and dependency failures.
 
-| Skill | Test | Pass means |
-|---|---|---|
-| Python reading | Explain a 40-line unfamiliar function: inputs, outputs, failure modes | Correct without running it |
-| Python writing | Write a 20-line function that validates a JSON payment request, plus 3 tests, no AI-generated code | Tests pass; you can explain every line |
-| Shell | Find all log lines for one correlation ID across 5 files and count them | Done with `grep`/`jq` in under 10 minutes |
-| HTTP / auth | Decode a JWT and state its audience, scopes, expiry, and what it does not authorize | All four correct |
-| Git | Branch, commit, resolve a simple conflict, open a PR | Done without lookup |
-| Containers | Explain what a given Dockerfile runs as, exposes, and mounts | All three correct |
-| Kubernetes | Read a ServiceAccount, Role, and RoleBinding and state the effective permission | Correct |
-| Threat modeling | DFD plus STRIDE/ATLAS overlay for a 6-component agent system in 60 minutes | Trust boundaries and top 5 threats defensible |
-
-Any skill that passes is credited. Track T modules for credited skills become optional refreshers.
+**Evidence and assurance:** Labs 17–18 focus on investigation, telemetry, architecture validation, remediation, and residual risk.
 
 ---
 
@@ -65,118 +65,6 @@ All core labs use one fictional system so complexity compounds instead of resett
 **Controls present before testing:** injection filtering; structured outputs; scoped delegated credentials; MCP gateway with tool allow-list; workload identity; human approval for selected actions; sandboxed code execution; egress restricted to one internal package proxy; activity logging with correlation IDs; memory scoping; policy versioning; synthetic data and credentials only.
 
 Use real, named open components where practical. Anything simulated is labelled `SIMULATED` in the lab README and diagrams.
-
----
-
-## 4. Sequencing
-
-Labs run in **priority order**, not numeric order. Phase 1 covers what technical AI security architecture and engineering interviews probe most: threat modeling, authorization, identity, MCP, and cloud blast radius.
-
-| Phase | Labs | Track L | Track B | Gate |
-|---|---|---|---|---|
-| **1. Interview-critical** | 1, 5, 6, 8, 13 | L1, L2 | none | Gate 1 |
-| **2. Influence and integrity** | 2, 3, 4, 7 | L3 | Review A | Gate 2 |
-| **3. Supply chain and multi-agent** | 9, 10, 11, 12 | L4 | Review B | Gate 3 |
-| **4. Containment, evidence, capstone** | 14, 15, 16, 17, 18 | L5 | Review C | Gate 4 (final) |
-
-**Effort is a planning estimate, not a commitment.** For someone building components while learning them, expect roughly 15 to 30 hours per lab, plus track work. After Lab 1, replace this estimate with your actual hours and recompute the phase dates. If Phase 1 alone exceeds your available window, publish Phase 1 before starting Phase 2.
-
----
-
-## 5. Track T: Technical Foundations
-
-### Coding milestones (measurable)
-
-"Unaided" means you write the code yourself. AI may explain concepts and review your code afterwards, but does not generate the solution.
-
-| By | Milestone |
-|---|---|
-| Gate 1 | Unaided: modify an existing authorization check to add one deny condition, and write the test proving it |
-| Gate 2 | Unaided: write a 50 to 100 line policy-check module (subject, action, resource, context) with at least 8 tests |
-| Gate 3 | Unaided: implement a policy enforcement point that intercepts a tool call, queries the policy engine, and logs the decision |
-| Gate 4 | Unaided: implement one remediation in the capstone end to end, including regression test and telemetry |
-
-### Authorship log
-
-Every lab keeps `AUTHORSHIP.md`, listing which files or functions you wrote, modified, or only reviewed, and which were AI-generated. It is the portfolio equivalent of a verifiable resume, and the honest answer to "show me the code you wrote."
-
-### Modules
-
-| Module | Covers | Primary labs |
-|---|---|---|
-| T1 Python | Read, trace, modify, test, debug, then write | All |
-| T2 Shell / Linux | Files, logs, env vars, `grep`, `find`, `curl`, `jq` | 1, 17 |
-| T3 Git | Branches, diffs, PRs, conflicts, signed commits | 9, 11 |
-| T4 HTTP / APIs | Methods, headers, status codes, auth headers, replay, idempotency | 2, 8 |
-| T5 Identity protocols | OAuth 2.x, OIDC, scopes vs resource authorization, audience, lifetime, delegation | 6, 12 |
-| T6 Policy-as-code | Read, write, and test Rego or Cedar independently of model output | 5, 7 |
-| T7 Containers | Images, runtime user, mounts, network exposure, least privilege | 10, 13 |
-
----
-
-## 6. Track P: Cloud and Platform Security
-
-Platform evidence (real or locally simulated, labelled) is **required** in Labs 6, 13, 14, and 18:
-
-- cloud IAM roles and trust policies
-- workload identity
-- Kubernetes service accounts and RBAC
-- secret access paths
-- service-to-service authentication
-- network policy and egress restrictions
-- tenant and resource scoping
-- privilege escalation paths
-- blast-radius analysis
-
----
-
-## 7. Track L: Leadership Artifacts
-
-Labs show technical judgment. These artifacts show how you would run the function. They demonstrate leadership thinking, not a leadership track record; present them honestly as such.
-
-| Artifact | After | Content |
-|---|---|---|
-| **L1 Risk acceptance memo** | Lab 5 | One residual risk: options (block, constrain, monitor, accept), cost, owner, recommendation |
-| **L2 Third-party AI vendor assessment** | Lab 8 | Assess one AI or MCP vendor: evidence requested, gaps, contract clauses, concentration risk |
-| **L3 Agent inventory and risk tiering** | Lab 7 | Inventory Maplewood's agents with risk tiers driven by autonomy, data, and impact |
-| **L4 Control ownership and metrics** | Lab 11 | RACI for agent controls, plus 5 to 8 measurable KPIs/KRIs |
-| **L5 90-day AI security program plan** | Lab 18 | Priorities, sequencing, staffing assumptions, budget drivers, board-level risk summary |
-
----
-
-## 8. Track B: Blind Architecture Reviews
-
-Each review uses an unfamiliar system with an incomplete architecture. Timebox: 90 minutes, then a 20-minute defense.
-
-| Review | System | Must cover |
-|---|---|---|
-| **A** | SaaS coding agent: repo access, package installation, CI, issue tracker | Config and dependency supply chain, token scope, CI blast radius |
-| **B** | Healthcare / research RAG: sensitive records, decision support | Retrieval authorization, provenance, human decision boundary |
-| **C** | Cloud infrastructure agent: cloud APIs, IaC, workload identity, approvals, rollback | IAM escalation paths, approval integrity, recovery |
-
-Output for each: missing evidence list, threat model, top 5 prioritized risks, recommended controls, tradeoffs defended.
-
----
-
-## 9. Track I: Interview Gates
-
-Each gate is timed, scored pass / not yet, and repeated until passed. **At least two gates use a human assessor** (peer, former colleague, or practitioner community). AI can run practice rounds, but should not be the only grader of work it helped build.
-
-Every gate includes:
-- 10 to 20 lines of unfamiliar code, explained without running it
-- one architecture diagram critique
-- one incident or evidence question
-- one control-design question
-- one executive-risk question
-- one pushback question (for example: "Why is the latency and availability dependency of a policy enforcement point justified?")
-- the coding milestone for that gate
-
-| Gate | Phase-specific must-demonstrate |
-|---|---|
-| **1** | Model judgment vs authorization; trace one decision from input to side effect; inspect a delegated token; explain MCP trust boundaries; IAM blast-radius reasoning |
-| **2** | RAG and memory trust; approval design critique; one log chain explained; Blind Review A defended |
-| **3** | Diff and CI config review; artifact provenance; multi-agent delegation analysis; Blind Review B defended |
-| **4** | Containment plan; incident reconstruction; resilience design; executive briefing; Blind Review C defended; full adversarial defense of the capstone |
 
 ---
 
@@ -232,102 +120,102 @@ Mapping legend is at the end of this section. ATLAS IDs are confirmed at atlas.m
 
 ### Block 1: Influence and Integrity
 
-#### Lab 1: Residual Risk Baseline (Phase 1)
+#### Lab 1: Residual Risk in a Defended Agent
 **Question:** What still fails in the defended system with every listed control enabled?
 **Build / test:** establish architecture; end-to-end threat model; baseline identity, policy, tooling, data, telemetry; reproduce one legitimate action and one unauthorized action caused by weak authorization design; remediate and regression-test.
 **Technical:** Python reading, shell, JSON evidence, tests.
 **Output:** one page on why a working guardrail can coexist with an unauthorized business outcome.
 
-#### Lab 2: Injection to Exfiltration (Phase 2)
+#### Lab 2: Injection to Exfiltration
 **Question:** With private data, untrusted content, and an outbound channel present, can filtering and structured outputs stop unauthorized disclosure?
 **Build / test:** synthetic private data; untrusted content; permitted outbound tool; trace influence to tool use to attempted disclosure; add data-flow and authorization controls.
 **Technical:** request tracing, structured tool calls, log analysis.
 
-#### Lab 3: RAG Integrity and Provenance (Phase 2)
+#### Lab 3: RAG Integrity and Provenance
 **Question:** Can access-controlled, ingestion-checked retrieval still feed stale, manipulated, or unauthorized knowledge into a decision?
 **Build / test:** synthetic vector store; provenance metadata; stale-but-authentic, manipulated, and cross-scope content; retrieval-driven decision.
 **Technical:** metadata filters, freshness checks, retrieval authorization tests.
 
-#### Lab 4: Persistent Memory Integrity (Phase 2)
+#### Lab 4: Persistent Memory Integrity
 **Question:** Can scoped memory become malicious, stale, cross-user, or over-trusted?
 **Build / test:** per-user memory; write provenance; expiry; cross-user isolation; stale and poisoning scenarios.
 **Technical:** SQLite or Postgres basics, serialization, access-control tests.
 
 ### Block 2: Identity and Authority
 
-#### Lab 5: Least Agency and Business Authorization (Phase 1)
+#### Lab 5: Least Agency and Business Authorization
 **Question:** Can a valid, allow-listed tool call still produce an unauthorized business outcome?
 **Build / test:** scoped identity; allow-listed tool; valid schema and authentication; wrong business authorization; deterministic policy outside the model.
 **Technical:** policy-as-code introduction; subject/action/resource/context; allow/deny tests.
 **ACS focus:** pre-execution hook and traceable decision inputs and outputs.
 
-#### Lab 6: Agent Identity, Delegated Authorization, and Workload Trust (Phase 1)
+#### Lab 6: Agent Identity and Delegated Authorization
 **Question:** Can the agent act for a user without inheriting all of the user's authority?
 **Build / test:** user, agent, and workload identities; delegated token; audience and resource constraints; service-to-service authorization; over-scope scenario.
 **Platform (required):** IAM policy and workload identity evidence; blast-radius analysis.
 **Technical:** OAuth/OIDC, JWT inspection, scopes vs business authorization.
 
-#### Lab 7: Human Approval as a Security Control (Phase 2)
+#### Lab 7: Human Approval as a Security Control
 **Question:** Does the approver see what will actually execute, and does approval stay meaningful under volume or ambiguity?
 **Build / test:** pending approval state; reviewer identity; approval bound to the exact action; amount, resource, and policy version visible; stale or mismatched approval; volume scenario.
 **Technical:** approval object, state machine, replay prevention, audit evidence.
 
 ### Block 3: Tools, Protocols, and Supply Chain
 
-#### Lab 8: Third-Party MCP Servers (Phase 1)
+#### Lab 8: Third-Party MCP Server Security
 **Question:** What if an authenticated, allow-listed MCP server changes behavior or behaves unsafely?
 **Build / test:** local MCP server on spec 2026-07-28; current authorization pattern; tool discovery; allow-list; metadata/runtime mismatch; behavior change after onboarding; runtime enforcement.
 **Technical:** MCP flow, tool metadata, auth boundary, server logs, ACS-style hook (self-implemented; see ACS note).
 
-#### Lab 9: Coding Agent and Configuration Supply Chain (Phase 3)
+#### Lab 9: Coding Agent and Configuration Supply Chain
 **Question:** Can configuration, dependency changes, CI automation, and human review still admit unsafe changes?
 **Build / test:** local repo; coding agent; PR workflow; dependency change; config-file change; CI checks; review gate.
 **Technical:** Git, diff review, CI YAML, dependency scanning, secure code review.
 
-#### Lab 10: Model Artifact Trust (Phase 3)
+#### Lab 10: Model Artifact Trust
 **Question:** Can a trusted model artifact still create unsafe execution at load time or runtime?
 **Build / test:** serialization format comparison; hash-verified artifact; loader configuration; controlled demonstration of unsafe deserialization in an isolated environment.
 **Technical:** hashing, signature concepts, artifact provenance.
 
-#### Lab 11: Provenance and Release Promotion (Phase 3)
+#### Lab 11: Provenance and Secure Release Promotion
 **Question:** Can you prove which model, prompt, tools, data, policies, and dependencies contributed to a release or action?
 **Build / test:** versioned model, config, prompt, and policy; SBOM/AIBOM metadata; CI promotion gate; unproven release denied; rollback evidence.
 **Technical:** CI/CD, provenance files, signing concepts, release policy.
 
-#### Lab 12: Multi-Agent Trust and Delegation (Phase 3)
+#### Lab 12: Multi-Agent Trust and Delegation
 **Question:** Why is authenticated agent-to-agent messaging insufficient for authorization?
 **Build / test:** two or more agent identities; authenticated messages; explicit delegation; recommendation vs approval; cross-agent leakage; unauthorized delegated action.
 **Technical:** message schemas, identity binding, delegation chains.
 
 ### Block 4: Containment and Resilience
 
-#### Lab 13: Sandbox Egress, Cloud IAM, and Permitted Exceptions (Phase 1)
+#### Lab 13: Sandbox Egress, Cloud IAM, and Permitted Exceptions
 **Question:** Does the sanctioned path out of the sandbox become the path to business impact?
 **Build / test:** container sandbox; restricted egress; one permitted service; workload identity; resource policy; secret boundaries; network policy; misuse of the permitted path; blast radius.
 **Platform (required):** container isolation, IAM policy, and egress evidence; Kubernetes or equivalent local workload-identity exercise.
 
-#### Lab 14: Rogue Agent Containment (Phase 4)
+#### Lab 14: Rogue Agent Containment
 **Question:** How do you contain an agent misbehaving with valid credentials through permitted interfaces?
 **Build / test:** detection signal; narrow or revoke authority; disable tool path; rotate credentials; stop workflow; preserve evidence.
 **Platform (required):** revocation and isolation evidence at the workload and IAM layer.
 
-#### Lab 15: Browser and Computer-Use Agents (Phase 4)
+#### Lab 15: Browser and Computer-Use Agent Security
 **Question:** What goes wrong when browser or desktop actions are permitted but semantically unsafe?
 **Build / test:** isolated browser; synthetic sites and accounts; untrusted page content; permitted click/type actions; confirmation boundary; action replay.
 
-#### Lab 16: Cascading Failure and AI Dependency Outage (Phase 4)
+#### Lab 16: Cascading Failure and AI Dependency Resilience
 **Question:** What breaks when the model provider fails, degrades, changes behavior, or becomes too expensive?
 **Build / test:** simulated outage; degraded responses; fallback and manual operation; backpressure; cost and rate-limit condition; recovery.
 **Technical:** retries, timeouts, circuit breakers, observability.
 
 ### Block 5: Evidence and Leadership
 
-#### Lab 17: Telemetry, Incident Response, and Evidence (Phase 4)
+#### Lab 17: Telemetry, Incident Response, and Evidence
 **Question:** Can a bad agent action be reconstructed to root cause, and can telemetry itself create risk?
 **Build / test:** correlated logs and traces; policy decision evidence; identity events; data-minimized telemetry; sensitive-log leakage; incident timeline; root cause.
 **Technical:** JSONL parsing, correlation IDs, a detection query, evidence retention.
 
-#### Lab 18: Capstone: Defend, Red Team, Explain (Phase 4)
+#### Lab 18: Capstone — Defend a Production-Style Agentic System
 **Question:** Can the system be independently reviewed, blind red-teamed, defended, monitored, and explained to engineering, risk, audit, and executives?
 **Required:** all prior components integrated; external blind attack scenarios; cloud/IAM blast radius; incident timeline; engineer brief; board brief (L5); full interview defense.
 
@@ -438,19 +326,3 @@ Reviewed October 2026. Re-verify before publication.
 
 ---
 
-## 17. Final Readiness Standard
-
-The success criterion is not the number of completed folders. Independently, without AI assistance in the moment, you can:
-
-- read unfamiliar security-relevant Python and write a tested authorization module
-- operate the lab from the command line
-- trace an OAuth/delegated authorization flow and inspect a token
-- review MCP tool trust, cloud IAM, and workload identity
-- inspect and modify a policy-as-code decision
-- threat-model an unfamiliar agent architecture in 90 minutes
-- reconstruct a bad agent action from evidence
-- distinguish authentication, authorization, business policy, and model judgment
-- explain one risk to an engineer, an auditor, and a CISO
-- recommend block, constrain, monitor, or accept, and defend it under technical and executive pushback
-
-No lab programme manufactures years of production ownership or a leadership track record. This one builds verifiable capability and shows how you would lead; present it as exactly that.
